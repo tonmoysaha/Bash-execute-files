@@ -3,6 +3,7 @@
 # Define the container name and RabbitMQ version
 # don't allow any space in value and folder
 # if use in folder name then we have to deal with \ like linux deal
+# Not allow space in key value like environment variable
 CONTAINER_NAME="my-postgres-container"
 PASSWORD=112233
 DB="tonmoy"
@@ -15,7 +16,7 @@ if docker ps -a | grep $CONTAINER_NAME; then
   docker rm $CONTAINER_NAME
 fi
 
-# Run RabbitMQ Docker container
+# Run Postgres Docker container
 echo "Starting $CONTAINER_NAME container..."
 docker run  --name $CONTAINER_NAME -e POSTGRES_PASSWORD="$PASSWORD" -e POSTGRES_DB=$DB -v "$HOST_VOLUME_DIR":/var/lib/postgresql/data   -p 5432:5432 -d  postgres:latest
 
