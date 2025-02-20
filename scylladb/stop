@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+# Define container names, ports, and data directories
+SCYLLADB_CONTAINER_NAME="scylladb_container"
+SCYLLA_MANAGER_CONTAINER_NAME="scylla_manager_container"
+
+# Check if the ScyllaDB container already exists and stop/remove it
+if docker ps -a | grep $SCYLLADB_CONTAINER_NAME; then
+  echo "Stopping and removing existing $SCYLLADB_CONTAINER_NAME container..."
+  docker stop $SCYLLADB_CONTAINER_NAME
+  docker rm $SCYLLADB_CONTAINER_NAME
+fi
+
+# Check if the Scylla Manager container already exists and stop/remove it
+if docker ps -a | grep $SCYLLA_MANAGER_CONTAINER_NAME; then
+  echo "Stopping and removing existing $SCYLLA_MANAGER_CONTAINER_NAME container..."
+  docker stop $SCYLLA_MANAGER_CONTAINER_NAME
+  docker rm $SCYLLA_MANAGER_CONTAINER_NAME
+fi
