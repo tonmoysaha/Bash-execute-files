@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+# Define container names, ports, and data directories
+GRAFANA_CONTAINER_NAME="grafana_container"
+GRAFANA_PORT=3000
+
+
+# Check if the Grafana container already exists and stop/remove it
+if docker ps -a | grep $GRAFANA_CONTAINER_NAME; then
+  echo "Stopping and removing existing $GRAFANA_CONTAINER_NAME container..."
+  docker stop $GRAFANA_CONTAINER_NAME
+  docker rm $GRAFANA_CONTAINER_NAME
+fi
